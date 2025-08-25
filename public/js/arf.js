@@ -1,10 +1,10 @@
 var margin = [20, 200, 20, 140],
-  width = 1400 - margin[1] - margin[3],
-  height = 1200 - margin[0] - margin[2],
+  width = 1900 - margin[1] - margin[3],
+  height = 900 - margin[0] - margin[2],
   i = 0,
   duration = 1250,
   root,
-  spacingFactor = 300; // horizontal spacing
+  spacingFactor = 500; // horizontal spacing
 
 var tree = d3.layout.tree().size([height, width]);
 
@@ -12,13 +12,15 @@ var diagonal = d3.svg.diagonal().projection(function (d) {
   return [d.y, d.x];
 });
 
-var vis = d3.select("body").append("svg:svg")
+var vis = d3
+  .select("body")
+  .append("svg:svg")
   .attr("width", width + margin[1] + margin[3])
   .attr("height", height + margin[0] + margin[2])
   .append("svg:g")
   .attr("transform", "translate(" + margin[3] + "," + margin[0] + ")");
 
-// Load data
+// load the external data
 d3.json("arf.json", function (json) {
   root = json;
   root.x0 = height / 2;
@@ -31,12 +33,39 @@ d3.json("arf.json", function (json) {
     }
   }
 
+  // Initialize tree
   root.children.forEach(toggleAll);
   update(root);
+
+  // === Add Fixed Column Headers (Goals, Objectives, PMs) ===
+  var headers = [
+    { text: "Goals", col: 1 },
+    { text: "Objectives", col: 2 },
+    { text: "PMs", col: 3 }
+  ];
+
+  vis
+    .selectAll("text.header")
+    .data(headers)
+    .enter()
+    .append("text")
+    .attr("class", "header")
+    .attr("x", function (d) {
+      return d.col * spacingFactor;
+    })
+    .attr("y", -30) // position above nodes
+    .attr("text-anchor", "middle")
+    .style("font-size", "20px")
+    .style("font-weight", "bold")
+    .style("fill", "darkblue")
+    .text(function (d) {
+      return d.text;
+    });
 });
 
 function update(source) {
   var nodes = tree.nodes(root).reverse();
+
   nodes.forEach(function (d) {
     d.y = d.depth * spacingFactor;
   });
@@ -45,8 +74,9 @@ function update(source) {
     return d.id || (d.id = ++i);
   });
 
-  // Enter nodes
-  var nodeEnter = node.enter().append("svg:g")
+  var nodeEnter = node
+    .enter()
+    .append("g")
     .attr("class", "node")
     .attr("transform", function (d) {
       return "translate(" + source.y0 + "," + source.x0 + ")";
@@ -56,66 +86,53 @@ function update(source) {
       update(d);
     });
 
-  // Box
-  nodeEnter.append("rect")
-    .attr("rx", 6).attr("ry", 6)
-    .style("fill", "#f9f9f9")
-    .style("stroke", "#ccc")
-    .style("stroke-width", 1);
-
-  // Text
-  var text = nodeEnter.append("a")
-    .attr("target", "_blank")
-    .attr("xlink:href", function (d) { return d.url; })
+  // Append text first (so we can measure its width)
+  var textElem = nodeEnter
     .append("text")
+    .attr("x", 0)
     .attr("dy", ".35em")
     .attr("text-anchor", "middle")
-    .style("fill", function (d) { return d.free ? 'black' : '#999'; })
     .style("font-size", "12px")
-    .style("fill-opacity", 1e-6);
+    .style("fill", "black")
+    .text(function (d) {
+      return d.name;
+    });
 
-  text.each(function (d) {
-    var arr = wrapText(d.name, 25);
-    for (var i = 0; i < arr.length; i++) {
-      d3.select(this).append("tspan")
-        .attr("x", 0)
-        .attr("dy", i === 0 ? ".35em" : "1.2em")
-        .text(arr[i]);
-    }
+  // Use bounding box to size rectangle dynamically
+  nodeEnter.each(function (d) {
+    var bbox = this.querySelector("text").getBBox();
+    d.textWidth = bbox.width + 20; // add padding
+    d.textHeight = bbox.height + 8;
   });
 
-  // Adjust rect size to text
-  nodeEnter.each(function () {
-    var g = d3.select(this);
-    var textEl = g.select("text").node();
-    if (textEl) {
-      var bbox = textEl.getBBox();
-      g.select("rect")
-        .attr("x", bbox.x - 8)
-        .attr("y", bbox.y - 6)
-        .attr("width", bbox.width + 20)
-        .attr("height", bbox.height + 12);
+  nodeEnter
+    .insert("rect", "text")
+    .attr("x", function (d) {
+      return -d.textWidth / 2;
+    })
+    .attr("y", function (d) {
+      return -d.textHeight / 2;
+    })
+    .attr("width", function (d) {
+      return d.textWidth;
+    })
+    .attr("height", function (d) {
+      return d.textHeight;
+    })
+    .style("fill", "#e6ecefff")
+    .style("stroke", "black")
+    .style("stroke-width", "1.5px");
 
-      // Radio button (circle) on right side of box
-      g.append("circle")
-        .attr("class", "radio-btn")
-        .attr("cx", bbox.x + bbox.width + 20) // right side + margin
-        .attr("cy", bbox.y + bbox.height / 2)
-        .attr("r", 6)
-        .style("fill", "#fff")
-        .style("stroke", "#666")
-        .style("stroke-width", 1.5);
-    }
-  });
-
-  // Transition nodes
-  var nodeUpdate = node.transition()
+  var nodeUpdate = node
+    .transition()
     .duration(duration)
-    .attr("transform", function (d) { return "translate(" + d.y + "," + d.x + ")"; });
+    .attr("transform", function (d) {
+      return "translate(" + d.y + "," + d.x + ")";
+    });
 
-  nodeUpdate.select("text").style("fill-opacity", 1);
-
-  var nodeExit = node.exit().transition()
+  var nodeExit = node
+    .exit()
+    .transition()
     .duration(duration)
     .attr("transform", function (d) {
       return "translate(" + source.y + "," + source.x + ")";
@@ -124,24 +141,29 @@ function update(source) {
 
   nodeExit.select("rect").style("fill-opacity", 1e-6);
   nodeExit.select("text").style("fill-opacity", 1e-6);
-  nodeExit.select("circle.radio-btn").style("fill-opacity", 1e-6);
 
-  // Update links
-  var link = vis.selectAll("path.link")
-    .data(tree.links(nodes), function (d) { return d.target.id; });
+  var link = vis.selectAll("path.link").data(tree.links(nodes), function (d) {
+    return d.target.id;
+  });
 
-  link.enter().insert("svg:path", "g")
+  link
+    .enter()
+    .insert("path", "g")
     .attr("class", "link")
     .attr("d", function (d) {
       var o = { x: source.x0, y: source.y0 };
       return diagonal({ source: o, target: o });
     })
-    .transition().duration(duration)
+    .transition()
+    .duration(duration)
     .attr("d", diagonal);
 
   link.transition().duration(duration).attr("d", diagonal);
 
-  link.exit().transition().duration(duration)
+  link
+    .exit()
+    .transition()
+    .duration(duration)
     .attr("d", function (d) {
       var o = { x: source.x, y: source.y };
       return diagonal({ source: o, target: o });
@@ -154,7 +176,6 @@ function update(source) {
   });
 }
 
-// Toggle children
 function toggle(d) {
   if (d.children) {
     d._children = d.children;
@@ -165,23 +186,6 @@ function toggle(d) {
   }
 }
 
-// Wrap text helper
-function wrapText(text, maxChars) {
-  var words = text.split(/\s+/), lines = [], line = [];
-  words.forEach(function (word) {
-    if ((line.join(" ") + " " + word).trim().length > maxChars) {
-      lines.push(line.join(" "));
-      line = [word];
-    } else {
-      line.push(word);
-    }
-  });
-  if (line.length) lines.push(line.join(" "));
-  return lines;
-}
-
-
-// Toggle Dark Mode
 function goDark() {
   var element = document.body;
   element.classList.toggle("dark-Mode");

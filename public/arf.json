@@ -5,64 +5,77 @@
     {
       "name": "Economic Development",
       "type": "folder",
+      "goal": "Economic Development",
       "children": [
         {
           "name": "Reduce peak period travel times",
           "type": "folder",
+          "objective": "Reduce peak period travel times",
           "children": [
             {
               "name": "Average travel time during AM and PM peak periods on major corridors",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Average travel time during AM and PM peak periods on major corridors"
             }
           ]
         },
         {
           "name": "Increase transportation investment focusing on economic vitality",
           "type": "folder",
+          "objective": "Increase transportation investment which focuses on economic vitality",
           "children": [
             {
               "name": "Change in employment/economic output in areas with new/improved transportation facilities",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Change in employment or economic output in areas with new or improved transportation facilities"
             }
           ]
         },
         {
           "name": "Improve reliability of travel to regional activity centers",
           "type": "folder",
+          "objective": "Improve reliability of travel to regional activity centers",
           "children": [
             {
               "name": "Planning Time Index (95th percentile travel time / free-flow travel time)",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Planning Time Index (95th percentile travel time / free-flow travel time) to/from activity centers"
             }
           ]
         },
         {
           "name": "Increase multimodal access to regional activity centers",
           "type": "folder",
+          "objective": "Increase multimodal access to regional activity centers",
           "children": [
             {
               "name": "Percentage of population within ½ mile of transit routes serving activity centers",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of population within ½ mile of transit routes serving activity centers"
             }
           ]
         },
         {
           "name": "Reduce freight bottlenecks",
           "type": "folder",
+          "objective": "Reduce freight bottlenecks",
           "children": [
             {
               "name": "Average truck travel time index (TTTI) on freight-priority corridors",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Average truck travel time index (TTTI) on freight-priority corridors"
             }
           ]
         },
         {
           "name": "Expand and maintain regional network of sidewalks, bike lanes, and trails",
           "type": "folder",
+          "objective": "Expand and maintain a regional network of sidewalks, bike lanes, and multi-use trails",
           "children": [
             {
               "name": "Total miles of sidewalks, bike lanes, and multi-use trails regionwide",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Total miles of sidewalks, bike lanes, and multi-use trails regionwide"
             }
           ]
         }
@@ -71,28 +84,34 @@
     {
       "name": "Equity/Accessibility",
       "type": "folder",
+      "goal": "Equity/Accessibility",
       "children": [
         {
           "name": "Reduce trip lengths with focus on EJ populations",
           "type": "folder",
+          "objective": "Reduce trip lengths for all people with a focus on Environmental Justice (EJ) populations",
           "children": [
             {
               "name": "Average trip length by mode and population group (EJ vs. non-EJ)",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Average trip length (in miles or minutes) by mode and population group (EJ vs. non-EJ)"
             }
           ]
         },
         {
           "name": "Increase access to jobs/services via transit, walking, biking for EJ populations",
           "type": "folder",
+          "objective": "Increase access to jobs and community services via transit, walking, and biking for all people with a focus on EJ populations",
           "children": [
             {
               "name": "Percentage of EJ population within ½-mile walk of frequent transit service",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of EJ population within a ½-mile walk of frequent transit service"
             },
             {
               "name": "Number of jobs accessible within 30 minutes by transit/walking/biking (EJ vs. non-EJ)",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Number of jobs accessible within 30 minutes by transit, walking, or biking, disaggregated by EJ vs. non-EJ populations"
             }
           ]
         }
@@ -101,36 +120,44 @@
     {
       "name": "Safety",
       "type": "folder",
+      "goal": "Safety",
       "children": [
         {
           "name": "Reduce motorized fatalities and serious injuries",
           "type": "folder",
+          "objective": "Reduce the number and rate of motorized fatalities and serious injuries",
           "children": [
             {
               "name": "Total number of motor vehicle fatalities (annual)",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Total number of motor vehicle fatalities (annual)"
             },
             {
               "name": "Total number of serious injuries from motor vehicle crashes",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Total number of serious injuries resulting from motor vehicle crashes"
             },
             {
               "name": "Fatality rate per 100 million VMT",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Fatality rate per 100 million VMT"
             },
             {
               "name": "Serious injury rate per 100 million VMT",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Serious injury rate per 100 million VMT"
             }
           ]
         },
         {
           "name": "Reduce non-motorized fatalities and serious injuries",
           "type": "folder",
+          "objective": "Reduce the number of non-motorized fatalities and serious injuries",
           "children": [
             {
               "name": "Non-motorized fatality/serious injury rate per capita or per 100,000 population",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Non-motorized fatality and serious injury rate per capita or per 100,000 population"
             }
           ]
         }
@@ -139,50 +166,61 @@
     {
       "name": "System Management",
       "type": "folder",
+      "goal": "System Management",
       "children": [
         {
           "name": "Improve condition of all bridges",
           "type": "folder",
+          "objective": "Improve the condition of all bridges",
           "children": [
             {
               "name": "Percentage of NHS bridges (by deck area) in good condition",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of NHS bridges (by deck area) in good condition"
             },
             {
               "name": "Percentage of NHS bridges (by deck area) in poor condition",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of NHS bridges (by deck area) in poor condition"
             }
           ]
         },
         {
           "name": "Improve lane miles of pavements in good/poor condition",
           "type": "folder",
+          "objective": "Improve the lane miles of pavements in good and poor condition",
           "children": [
             {
               "name": "Percentage of Interstate lane miles in good condition",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of Interstate lane miles in good condition"
             },
             {
               "name": "Percentage of Interstate lane miles in poor condition",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of Interstate lane miles in poor condition"
             }
           ]
         },
         {
           "name": "Improve percent of transit vehicles/facilities in good/poor condition",
           "type": "folder",
+          "objective": "Improve percent of transit vehicles and facilities in good and poor condition",
           "children": [
             {
               "name": "Percentage of transit revenue vehicles exceeding useful life benchmark",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of transit revenue vehicles that exceed useful life benchmark (ULB)"
             },
             {
               "name": "Percentage of non-revenue vehicles exceeding useful life benchmark",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of non-revenue vehicles exceeding ULB"
             },
             {
               "name": "Percentage of facilities rated below 3.0 on FTA's TERM scale",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Percentage of facilities rated below 3.0 on FTA's TERM scale (Transit Economic Requirements Model)"
             }
           ]
         }
@@ -191,28 +229,34 @@
     {
       "name": "Environment",
       "type": "folder",
+      "goal": "Environment",
       "children": [
         {
           "name": "Reduce transportation-related pollutants",
           "type": "folder",
+          "objective": "Reduce transportation-related pollutants",
           "children": [
             {
               "name": "Total tons of transportation-related emissions per year (CO₂, NOₓ, VOCs, PM2.5)",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Total tons of transportation-related emissions per year (CO₂, NOₓ, VOCs, PM2.5)"
             },
             {
               "name": "Emissions per capita or per vehicle mile traveled (VMT)",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Emissions per capita or per vehicle mile traveled (VMT)"
             }
           ]
         },
         {
           "name": "Reduce impact on environmentally sensitive areas",
           "type": "folder",
+          "objective": "Reduce impact of plan on environmentally sensitive areas",
           "children": [
             {
               "name": "Acres of environmentally sensitive land impacted by transportation projects",
-              "type": "leaf"
+              "type": "leaf",
+              "pm": "Acres of environmentally sensitive land directly impacted by funded or programmed transportation projects"
             }
           ]
         }
