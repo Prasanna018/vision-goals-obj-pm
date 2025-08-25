@@ -1,0 +1,222 @@
+{
+  "name": "Vision",
+  "type": "folder",
+  "children": [
+    {
+      "name": "Economic Development",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Reduce peak period travel times",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Average travel time during AM and PM peak periods on major corridors",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Increase transportation investment focusing on economic vitality",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Change in employment/economic output in areas with new/improved transportation facilities",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Improve reliability of travel to regional activity centers",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Planning Time Index (95th percentile travel time / free-flow travel time)",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Increase multimodal access to regional activity centers",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Percentage of population within ½ mile of transit routes serving activity centers",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Reduce freight bottlenecks",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Average truck travel time index (TTTI) on freight-priority corridors",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Expand and maintain regional network of sidewalks, bike lanes, and trails",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Total miles of sidewalks, bike lanes, and multi-use trails regionwide",
+              "type": "leaf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Equity/Accessibility",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Reduce trip lengths with focus on EJ populations",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Average trip length by mode and population group (EJ vs. non-EJ)",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Increase access to jobs/services via transit, walking, biking for EJ populations",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Percentage of EJ population within ½-mile walk of frequent transit service",
+              "type": "leaf"
+            },
+            {
+              "name": "Number of jobs accessible within 30 minutes by transit/walking/biking (EJ vs. non-EJ)",
+              "type": "leaf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Safety",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Reduce motorized fatalities and serious injuries",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Total number of motor vehicle fatalities (annual)",
+              "type": "leaf"
+            },
+            {
+              "name": "Total number of serious injuries from motor vehicle crashes",
+              "type": "leaf"
+            },
+            {
+              "name": "Fatality rate per 100 million VMT",
+              "type": "leaf"
+            },
+            {
+              "name": "Serious injury rate per 100 million VMT",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Reduce non-motorized fatalities and serious injuries",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Non-motorized fatality/serious injury rate per capita or per 100,000 population",
+              "type": "leaf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "System Management",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Improve condition of all bridges",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Percentage of NHS bridges (by deck area) in good condition",
+              "type": "leaf"
+            },
+            {
+              "name": "Percentage of NHS bridges (by deck area) in poor condition",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Improve lane miles of pavements in good/poor condition",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Percentage of Interstate lane miles in good condition",
+              "type": "leaf"
+            },
+            {
+              "name": "Percentage of Interstate lane miles in poor condition",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Improve percent of transit vehicles/facilities in good/poor condition",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Percentage of transit revenue vehicles exceeding useful life benchmark",
+              "type": "leaf"
+            },
+            {
+              "name": "Percentage of non-revenue vehicles exceeding useful life benchmark",
+              "type": "leaf"
+            },
+            {
+              "name": "Percentage of facilities rated below 3.0 on FTA's TERM scale",
+              "type": "leaf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Environment",
+      "type": "folder",
+      "children": [
+        {
+          "name": "Reduce transportation-related pollutants",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Total tons of transportation-related emissions per year (CO₂, NOₓ, VOCs, PM2.5)",
+              "type": "leaf"
+            },
+            {
+              "name": "Emissions per capita or per vehicle mile traveled (VMT)",
+              "type": "leaf"
+            }
+          ]
+        },
+        {
+          "name": "Reduce impact on environmentally sensitive areas",
+          "type": "folder",
+          "children": [
+            {
+              "name": "Acres of environmentally sensitive land impacted by transportation projects",
+              "type": "leaf"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
