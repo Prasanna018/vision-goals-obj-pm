@@ -1,10 +1,10 @@
 var margin = [20, 200, 20, 140],
-  width = 2000 - margin[1] - margin[3],
-  height = 1600 - margin[0] - margin[2],
+  width = 3000 - margin[1] - margin[3],
+  height = 2600 - margin[0] - margin[2],
   i = 0,
   duration = 1250,
   root,
-  spacingFactor = 500; // horizontal spacing
+  spacingFactor = 900; // horizontal spacing
 
 var tree = d3.layout.tree().size([height, width]);
 
@@ -89,7 +89,7 @@ function update(source) {
   // === Append text first with styles so bbox is correct ===
   nodeEnter
     .append("text")
-    .style("font-size", "12px") // ✅ Bigger font
+    .style("font-size", "20px") // ✅ Bigger font
     .style("font-weight", "bold") // ✅ Bold
     .style("fill", "black")
     .attr("dy", ".35em") // vertical centering
