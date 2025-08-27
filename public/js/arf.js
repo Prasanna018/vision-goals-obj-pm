@@ -89,7 +89,7 @@ function update(source) {
   // === Append text first with styles so bbox is correct ===
   nodeEnter
     .append("text")
-    .style("font-size", "20px") // ✅ Bigger font
+    .style("font-size", "18px") // ✅ Bigger font
     .style("font-weight", "bold") // ✅ Bold
     .style("fill", "black")
     .attr("dy", ".35em") // vertical centering
