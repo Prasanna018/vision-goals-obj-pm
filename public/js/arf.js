@@ -1,6 +1,6 @@
 var margin = [20, 200, 20, 140],
-  width = 1900 - margin[1] - margin[3],
-  height = 900 - margin[0] - margin[2],
+  width = 2000 - margin[1] - margin[3],
+  height = 1600 - margin[0] - margin[2],
   i = 0,
   duration = 1250,
   root,
@@ -41,7 +41,7 @@ d3.json("arf.json", function (json) {
   var headers = [
     { text: "Goals", col: 1 },
     { text: "Objectives", col: 2 },
-    { text: "PMs", col: 3 }
+    { text: "PMs", col: 3 },
   ];
 
   vis
@@ -86,25 +86,26 @@ function update(source) {
       update(d);
     });
 
-  // Append text first (so we can measure its width)
-  var textElem = nodeEnter
+  // === Append text first with styles so bbox is correct ===
+  nodeEnter
     .append("text")
-    .attr("x", 0)
-    .attr("dy", ".35em")
-    .attr("text-anchor", "middle")
-    .style("font-size", "12px")
+    .style("font-size", "12px") // ✅ Bigger font
+    .style("font-weight", "bold") // ✅ Bold
     .style("fill", "black")
+    .attr("dy", ".35em") // vertical centering
+    .attr("text-anchor", "start") // left aligned
     .text(function (d) {
       return d.name;
     });
 
-  // Use bounding box to size rectangle dynamically
+  // === Measure text AFTER styles are applied ===
   nodeEnter.each(function (d) {
     var bbox = this.querySelector("text").getBBox();
-    d.textWidth = bbox.width + 20; // add padding
-    d.textHeight = bbox.height + 8;
+    d.textWidth = bbox.width + 20; // horizontal padding
+    d.textHeight = bbox.height + 20; // vertical padding
   });
 
+  // === Insert rectangle behind text ===
   nodeEnter
     .insert("rect", "text")
     .attr("x", function (d) {
@@ -119,10 +120,16 @@ function update(source) {
     .attr("height", function (d) {
       return d.textHeight;
     })
-    .style("fill", "#e6ecefff")
+    .style("fill", "#fdfeffff")
     .style("stroke", "black")
     .style("stroke-width", "1.5px");
 
+  // === Reposition text inside rect (left aligned with padding) ===
+  nodeEnter.select("text").attr("x", function (d) {
+    return -d.textWidth / 2 + 10;
+  });
+
+  // === Handle node updates ===
   var nodeUpdate = node
     .transition()
     .duration(duration)
@@ -142,6 +149,7 @@ function update(source) {
   nodeExit.select("rect").style("fill-opacity", 1e-6);
   nodeExit.select("text").style("fill-opacity", 1e-6);
 
+  // === Links between nodes ===
   var link = vis.selectAll("path.link").data(tree.links(nodes), function (d) {
     return d.target.id;
   });
@@ -170,6 +178,7 @@ function update(source) {
     })
     .remove();
 
+  // Stash positions
   nodes.forEach(function (d) {
     d.x0 = d.x;
     d.y0 = d.y;
